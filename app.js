@@ -97,7 +97,7 @@ function pair() {
    for(let image of imgList) {
      image.classList.add("imageHidden");
      image.classList.remove("imageVisible"); 
-          }
+      }
       count = 0;
       alpaca = 0;
       jellyfish = 0;
