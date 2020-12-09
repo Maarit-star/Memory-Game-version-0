@@ -37,6 +37,12 @@ let redpanda = 0;
 let chameleon = 0;
 let penguins = 0;
 
+let imgList = 
+   [ img1, img2, img3, img4, img5, img6, img7, img8, img9, img10 ];
+
+let animals = 
+   [ alpaca, jellyfish, redpanda, chameleon, penguins ];
+
 
 // EVENT LISTENERS
 shuffleButton.addEventListener('click', shuffle);
@@ -88,69 +94,43 @@ function pair() {
  // callback functions to hide images if pair is not a match
  // and also to reset the counters
  function addImageHidden() {
-    img1.classList.add("imageHidden");
-    img1.classList.remove("imageVisible");
-    alpaca = 0;
-    count = 0;
-    img2.classList.add("imageHidden");
-    img2.classList.remove("imageVisible");
-    jellyfish = 0;
-    count = 0;
-    img3.classList.add("imageHidden");
-    img3.classList.remove("imageVisible");
-    redpanda = 0;
-    count = 0;
-    img4.classList.add("imageHidden");
-    img4.classList.remove("imageVisible");
-    chameleon = 0;
-    count = 0;
-    img5.classList.add("imageHidden");
-    img5.classList.remove("imageVisible");
-    penguins = 0;
-    count = 0;
-    img6.classList.add("imageHidden");
-    img6.classList.remove("imageVisible");
-    alpaca = 0;
-    count = 0;
-    img7.classList.add("imageHidden");
-    img7.classList.remove("imageVisible");
-    jellyfish = 0;
-    count = 0;
-    img8.classList.add("imageHidden");
-    img8.classList.remove("imageVisible");
-    redpanda = 0;
-    count = 0;
-    img9.classList.add("imageHidden");
-    img9.classList.remove("imageVisible");
-    chameleon = 0;
-    count = 0;
-    img10.classList.add("imageHidden");
-    img10.classList.remove("imageVisible");
-    penguins = 0;
-    count = 0;
- }
+   for(let image of imgList) {
+     image.classList.add("imageHidden");
+     image.classList.remove("imageVisible"); 
+          }
+      count = 0;
+      alpaca = 0;
+      jellyfish = 0;
+      redpanda = 0;
+      chameleon = 0;
+      penguins = 0;
+    }
+        
+   function operationsIfPair(){
+     setTimeout(pair,100);
+        scores++;
+        inputScores.value = scores;
+   }
+
+   function operationsIfNotPair(){
+     setTimeout(notPair, 100);
+        setTimeout(addImageHidden, 1000);
+        failedAttempts++;
+        inputAttempts.value = failedAttempts;
+   }
+ 
 
    function toggle() {
     count++;
     alpaca++; 
-
-    // testausta varten 
-    /*console.log(count + " count");
-    console.log(alpaca + " alpaca");*/
-
+    console.log(alpaca + " alpaca");
     img1.classList.add("imageVisible");
     img1.classList.remove("imageHidden");
-
     if(count==2 || count==4 || count==6 || count==8 || count==10){
         if(alpaca==2){
-        setTimeout(pair,100);
-        scores++;
-        inputScores.value = scores;
+        operationsIfPair();
         }else{
-        setTimeout(notPair, 100);
-        setTimeout(addImageHidden, 1000);
-        failedAttempts++;
-        inputAttempts.value = failedAttempts;
+        operationsIfNotPair();
         }
         }
       } 
@@ -158,21 +138,14 @@ function pair() {
     function toggle2() {
     count++;
     jellyfish++;
-    if(img2.className==="imageHidden"){
+    console.log(jellyfish + " jellyfish");
         img2.classList.add("imageVisible");
         img2.classList.remove("imageHidden");
-    }
     if(count==2 || count==4 || count==6 || count==8 || count==10){
       if(jellyfish==2){
-        setTimeout(pair,100);
-        scores++;
-        inputScores.value = scores;
-      }
-      if(jellyfish!=2){
-        setTimeout(notPair,100);
-        setTimeout(addImageHidden, 1500);
-        failedAttempts++;
-        inputAttempts.value = failedAttempts;  
+        operationsIfPair();
+      }else{
+          operationsIfNotPair();
       }
     }
 }
@@ -180,21 +153,13 @@ function pair() {
     count++;
     redpanda++;
     console.log(redpanda + " redpanda");
-    if(img3.className==="imageHidden"){
         img3.classList.add("imageVisible");
         img3.classList.remove("imageHidden");
-    }
     if(count==2 || count==4 || count==6 || count==8 || count==10){
       if(redpanda==2){
-        setTimeout(pair, 100);
-        scores++;
-        inputScores.value = scores;
-      }
-      if(redpanda!=2){
-        setTimeout(notPair, 100);
-        setTimeout(addImageHidden, 1500); 
-        failedAttempts++;
-        inputAttempts.value = failedAttempts;  
+        operationsIfPair();
+      }else{
+          operationsIfNotPair();
       }
     }
   }
@@ -202,21 +167,13 @@ function pair() {
     count++;
     chameleon++;
     console.log(chameleon + " chameleon");
-    if(img4.className==="imageHidden"){
         img4.classList.add("imageVisible");
         img4.classList.remove("imageHidden");
-    }
     if(count==2 || count==4 || count==6 || count==8 || count==10){
       if(chameleon==2){
-        setTimeout(pair, 100);
-        scores++;
-        inputScores.value = scores;
-      }
-      if(chameleon!=2){
-        setTimeout(notPair, 100);
-        setTimeout(addImageHidden, 1500); 
-        failedAttempts++;
-        inputAttempts.value = failedAttempts;  
+        operationsIfPair();
+      }else{
+        operationsIfNotPair();
       }
     }
   }
@@ -224,21 +181,13 @@ function pair() {
     count++;
     penguins++;
     console.log(penguins + " penguins");
-    if(img5.className==="imageHidden"){
         img5.classList.add("imageVisible");
         img5.classList.remove("imageHidden");
-    }
     if(count==2 || count==4 || count==6 || count== 8 || count==10){
       if(penguins==2){
-        setTimeout(pair, 100);
-        scores++;
-        inputScores.value = scores;
-      }
-      if(penguins!=2){
-        setTimeout(notPair, 100);
-        setTimeout(addImageHidden, 1500); 
-        failedAttempts++;
-        inputAttempts.value = failedAttempts;  
+        operationsIfPair();
+      }else{
+         operationsIfNotPair();
       }
     }
   }
@@ -246,20 +195,13 @@ function pair() {
     count++;
     alpaca++;
     console.log(alpaca + " alpaca");
-    if(img6.className==="imageHidden"){
         img6.classList.add("imageVisible");
         img6.classList.remove("imageHidden");
-    }
     if(count==2 || count==4 || count==6 || count==8 || count==10){
       if(alpaca==2){
-        setTimeout(pair, 100);
-        scores++;
-        inputScores.value = scores;
-      }if(alpaca!=2){
-        setTimeout(notPair, 100);
-        setTimeout(addImageHidden, 1500); 
-        failedAttempts++;
-        inputAttempts.value = failedAttempts;  
+        operationsIfPair();
+      }else{
+        operationsIfNotPair();
       }
     }
   }
@@ -267,21 +209,13 @@ function pair() {
     count++;
     jellyfish++;
     console.log(jellyfish + " jellyfish");
-    if(img7.className==="imageHidden"){
         img7.classList.add("imageVisible");
         img7.classList.remove("imageHidden");
-    }
     if(count==2 || count==4 || count==6 || count==8 || count==10){
       if(jellyfish==2){
-        setTimeout(pair, 100);
-        scores++;
-        inputScores.value = scores;
-      }
-      if(jellyfish!=2){
-        setTimeout(notPair, 100);
-        setTimeout(addImageHidden, 1500); 
-        failedAttempts++;
-        inputAttempts.value = failedAttempts;  
+        operationsIfPair();
+      }else{
+        operationsIfNotPair();  
       }
     }
   }
@@ -289,21 +223,13 @@ function pair() {
     count++;
     redpanda++;
     console.log(redpanda + " redpanda");
-    if(img8.className==="imageHidden"){
         img8.classList.add("imageVisible");
         img8.classList.remove("imageHidden");
-    }
     if(count==2 || count==4 || count==6 || count==8 || count==10){
       if(redpanda==2){
-        setTimeout(pair, 100);
-        scores++;
-        inputScores.value = scores;
-      }
-      if(redpanda!=2){
-        setTimeout(notPair, 100);
-        setTimeout(addImageHidden, 1500); 
-        failedAttempts++;
-        inputAttempts.value = failedAttempts;  
+        operationsIfPair();
+      }else{
+          operationsIfNotPair(); 
       }
     }
   }
@@ -311,21 +237,13 @@ function pair() {
     count++;
     chameleon++;
     console.log(chameleon + " chameleon");
-    if(img9.className==="imageHidden"){
         img9.classList.add("imageVisible");
         img9.classList.remove("imageHidden");
-    }
     if(count==2 || count==4 || count==6 || count==8 || count==10){
       if(chameleon==2){
-        setTimeout(pair, 100);
-        scores++;
-        inputScores.value = scores;
-      }
-      if(chameleon!=2){
-        setTimeout(notPair, 100);
-        setTimeout(addImageHidden, 1500); 
-        failedAttempts++;
-        inputAttempts.value = failedAttempts;  
+        operationsIfPair();
+      }else{
+         operationsIfNotPair();
       }
     }
   }
@@ -333,21 +251,14 @@ function pair() {
     count++;
     penguins++;
     console.log(penguins + " penguins");
-    if(img10.className==="imageHidden"){
         img10.classList.add("imageVisible");
         img10.classList.remove("imageHidden");
-    }
     if(count==2 || count==4 || count==6 || count==8 || count==10){
       if(penguins==2){
-        setTimeout(pair, 100);
-        scores++;
-        inputScores.value = scores;
+        operationsIfPair();
       }
       if(penguins!=2){
-        setTimeout(notPair, 100);
-        setTimeout(addImageHidden, 1500); 
-        failedAttempts++;
-        inputAttempts.value = failedAttempts;  
+         operationsIfNotPair();
       }
     }
   }
